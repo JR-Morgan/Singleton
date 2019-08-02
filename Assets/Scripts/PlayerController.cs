@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 	
     void Start()
     {
-
+		this.speed = new Vector2();
     }
 
     private void Update()
@@ -32,10 +32,16 @@ public class PlayerController : MonoBehaviour
 		this.transform.position += new Vector3(this.speed.x * Time.deltaTime, this.speed.y * Time.deltaTime, 0.0f);
 
 		this.speed *= Mathf.Pow(DAMPENING, Time.deltaTime);
+
 		PickupCheck();
     }
 
-    private void PickupCheck()
+	private void OnCollisionEnter(Collision collision)
+	{
+		Debug.Log("Collided with: " + collision.gameObject.name);
+	}
+
+	private void PickupCheck()
     {
         
     }
