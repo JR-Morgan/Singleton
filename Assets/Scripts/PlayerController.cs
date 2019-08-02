@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public Item item;
 
     [SerializeField]
-    private static readonly float SPEED = 512.0f;
+    private static readonly float SPEED = 64.0f;
 
 	[SerializeField] private readonly float DAMPENING = 0.01f;
 
