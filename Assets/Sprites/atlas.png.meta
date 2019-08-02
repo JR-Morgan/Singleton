@@ -4,118 +4,118 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -997972493423046422
-    second: atlas_0
+    second: Grass_0_0
   - first:
       213: -199644854353079308
-    second: atlas_1
+    second: Grass_0_1
   - first:
       213: -217455086581007235
-    second: atlas_2
+    second: Grass_0_2
   - first:
       213: 4335250483284255847
-    second: atlas_3
+    second: Grass_0_3
   - first:
       213: -983156657889264743
-    second: atlas_4
+    second: Grass_0_4
   - first:
       213: -2850093654693141264
-    second: atlas_5
+    second: Grass_0_5
   - first:
       213: 9093825842685103111
-    second: atlas_6
+    second: Grass_0_6
   - first:
       213: 3150387745278999259
-    second: atlas_7
+    second: Grass_0_7
   - first:
       213: 3210994475073176143
-    second: atlas_8
+    second: Player_0_Right_0
   - first:
       213: -6596105612730252187
-    second: atlas_9
+    second: Player_0_Right_1
   - first:
       213: -7690861461720601230
-    second: atlas_10
+    second: Player_0_Right_2
   - first:
       213: -6684475192863260856
-    second: atlas_11
+    second: Player_0_Right_3
   - first:
       213: 9170327630243124144
-    second: atlas_12
+    second: Item_Sword_0
   - first:
       213: 1404248521807868572
-    second: atlas_13
+    second: Item_Bomb_0
   - first:
       213: 5680673976619871293
-    second: atlas_14
+    second: Item_Bomb_1
   - first:
       213: -7969225410775572928
-    second: atlas_15
+    second: Item_Key_0
   - first:
       213: -1613414928997637167
-    second: atlas_16
+    second: Dirt_0_dr
   - first:
       213: -8942817527115040722
-    second: atlas_17
+    second: Dirt_0_dlr
   - first:
       213: -7883866192385575364
-    second: atlas_18
+    second: Dirt_0_dl
   - first:
       213: 920200401680159811
-    second: atlas_19
+    second: Dirt_0_d
   - first:
       213: 5821839773869540889
-    second: atlas_20
+    second: Dirt_0_r
   - first:
       213: -78570060565829106
-    second: atlas_21
+    second: Dirt_0_lr
   - first:
       213: 237255737888612096
-    second: atlas_22
+    second: Dirt_0_l
   - first:
       213: -7773183333426011814
-    second: atlas_23
+    second: Player_0_Left_0
   - first:
       213: -480281958130896327
-    second: atlas_24
+    second: Player_0_Left_1
   - first:
       213: -1158871858569825772
-    second: atlas_25
+    second: Player_0_Left_2
   - first:
       213: 6114706908185900674
-    second: atlas_26
+    second: Player_0_Left_3
   - first:
       213: 7286500777932155457
-    second: atlas_27
+    second: Coin_0
   - first:
       213: 1608028697691039176
-    second: atlas_28
+    second: Dirt_0_udl
   - first:
       213: 1724232623091690329
-    second: atlas_29
+    second: Dirt_0_udlr
   - first:
       213: 3568587909782029186
-    second: atlas_30
+    second: Dirt_0_udr
   - first:
       213: 277801872691154187
-    second: atlas_31
+    second: Dirt_0_ud
   - first:
       213: -9105464366904032908
-    second: atlas_32
+    second: Dirt_0
   - first:
       213: -1824652076595972009
-    second: atlas_33
+    second: Grass_1
   - first:
       213: -6540885550996791055
-    second: atlas_34
+    second: Dirt_0_ur
   - first:
       213: -837451798449247853
-    second: atlas_35
+    second: Dirt_0_ulr
   - first:
       213: 1645464791298931044
-    second: atlas_36
+    second: Dirt_0_ul
   - first:
       213: -7379956545844754435
-    second: atlas_37
+    second: Dirt_0_u
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -212,7 +212,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: atlas_0
+      name: Grass_0_0
       rect:
         serializedVersion: 2
         x: 0
@@ -233,7 +233,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_1
+      name: Grass_0_1
       rect:
         serializedVersion: 2
         x: 8
@@ -254,7 +254,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_2
+      name: Grass_0_2
       rect:
         serializedVersion: 2
         x: 16
@@ -275,7 +275,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_3
+      name: Grass_0_3
       rect:
         serializedVersion: 2
         x: 24
@@ -296,7 +296,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_4
+      name: Grass_0_4
       rect:
         serializedVersion: 2
         x: 32
@@ -317,7 +317,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_5
+      name: Grass_0_5
       rect:
         serializedVersion: 2
         x: 40
@@ -338,7 +338,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_6
+      name: Grass_0_6
       rect:
         serializedVersion: 2
         x: 48
@@ -359,7 +359,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_7
+      name: Grass_0_7
       rect:
         serializedVersion: 2
         x: 56
@@ -380,7 +380,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_8
+      name: Player_0_Right_0
       rect:
         serializedVersion: 2
         x: 64
@@ -401,7 +401,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_9
+      name: Player_0_Right_1
       rect:
         serializedVersion: 2
         x: 72
@@ -422,7 +422,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_10
+      name: Player_0_Right_2
       rect:
         serializedVersion: 2
         x: 80
@@ -443,7 +443,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_11
+      name: Player_0_Right_3
       rect:
         serializedVersion: 2
         x: 88
@@ -464,7 +464,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_12
+      name: Item_Sword_0
       rect:
         serializedVersion: 2
         x: 96
@@ -485,7 +485,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_13
+      name: Item_Bomb_0
       rect:
         serializedVersion: 2
         x: 104
@@ -506,7 +506,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_14
+      name: Item_Bomb_1
       rect:
         serializedVersion: 2
         x: 112
@@ -527,7 +527,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_15
+      name: Item_Key_0
       rect:
         serializedVersion: 2
         x: 120
@@ -548,7 +548,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_16
+      name: Dirt_0_dr
       rect:
         serializedVersion: 2
         x: 0
@@ -569,7 +569,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_17
+      name: Dirt_0_dlr
       rect:
         serializedVersion: 2
         x: 8
@@ -590,7 +590,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_18
+      name: Dirt_0_dl
       rect:
         serializedVersion: 2
         x: 16
@@ -611,7 +611,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_19
+      name: Dirt_0_d
       rect:
         serializedVersion: 2
         x: 24
@@ -632,7 +632,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_20
+      name: Dirt_0_r
       rect:
         serializedVersion: 2
         x: 32
@@ -653,7 +653,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_21
+      name: Dirt_0_lr
       rect:
         serializedVersion: 2
         x: 40
@@ -674,7 +674,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_22
+      name: Dirt_0_l
       rect:
         serializedVersion: 2
         x: 48
@@ -695,7 +695,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_23
+      name: Player_0_Left_0
       rect:
         serializedVersion: 2
         x: 64
@@ -716,7 +716,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_24
+      name: Player_0_Left_1
       rect:
         serializedVersion: 2
         x: 72
@@ -737,7 +737,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_25
+      name: Player_0_Left_2
       rect:
         serializedVersion: 2
         x: 80
@@ -758,7 +758,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_26
+      name: Player_0_Left_3
       rect:
         serializedVersion: 2
         x: 88
@@ -779,7 +779,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_27
+      name: Coin_0
       rect:
         serializedVersion: 2
         x: 96
@@ -800,7 +800,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_28
+      name: Dirt_0_udl
       rect:
         serializedVersion: 2
         x: 0
@@ -821,7 +821,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_29
+      name: Dirt_0_udlr
       rect:
         serializedVersion: 2
         x: 8
@@ -842,7 +842,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_30
+      name: Dirt_0_udr
       rect:
         serializedVersion: 2
         x: 16
@@ -863,7 +863,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_31
+      name: Dirt_0_ud
       rect:
         serializedVersion: 2
         x: 24
@@ -884,7 +884,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_32
+      name: Dirt_0
       rect:
         serializedVersion: 2
         x: 32
@@ -905,7 +905,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_33
+      name: Grass_1
       rect:
         serializedVersion: 2
         x: 40
@@ -926,7 +926,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_34
+      name: Dirt_0_ur
       rect:
         serializedVersion: 2
         x: 0
@@ -947,7 +947,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_35
+      name: Dirt_0_ulr
       rect:
         serializedVersion: 2
         x: 8
@@ -968,7 +968,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_36
+      name: Dirt_0_ul
       rect:
         serializedVersion: 2
         x: 16
@@ -989,7 +989,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_37
+      name: Dirt_0_u
       rect:
         serializedVersion: 2
         x: 24
