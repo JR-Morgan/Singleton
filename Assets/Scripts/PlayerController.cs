@@ -21,28 +21,33 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
 	{
-		Vector2 acceleration = new Vector2();
+        movementUpdate();
+    }
 
-		if (Input.GetKey(KeyCode.W)) acceleration.y += SPEED;
-		if (Input.GetKey(KeyCode.S)) acceleration.y -= SPEED;
-		if (Input.GetKey(KeyCode.A)) acceleration.x -= SPEED;
-		if (Input.GetKey(KeyCode.D)) acceleration.x += SPEED;
+    private void movementUpdate()
+    {
+        Vector2 acceleration = new Vector2();
 
-		this.speed += acceleration * Time.deltaTime;
-		this.transform.position += new Vector3(this.speed.x * Time.deltaTime, this.speed.y * Time.deltaTime, 0.0f);
+        if (Input.GetKey(KeyCode.W)) acceleration.y += SPEED;
+        if (Input.GetKey(KeyCode.S)) acceleration.y -= SPEED;
+        if (Input.GetKey(KeyCode.A)) acceleration.x -= SPEED;
+        if (Input.GetKey(KeyCode.D)) acceleration.x += SPEED;
 
-		this.speed *= Mathf.Pow(DAMPENING, Time.deltaTime);
+        this.speed += acceleration * Time.deltaTime;
+        this.transform.position += new Vector3(this.speed.x * Time.deltaTime, this.speed.y * Time.deltaTime, 0.0f);
 
-		PickupCheck();
+        this.speed *= Mathf.Pow(DAMPENING, Time.deltaTime);
     }
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		Debug.Log("Collided with: " + collision.gameObject.name);
+        Debug.Log("Collided with: " + collision.gameObject.name);
+
+        if (collision.gameObject.tag == "Item")
+        {
+            item = gameObject.GetComponent<DropedItem>().item;
+            Destroy(collision.gameObject);
+        }
 	}
 
-	private void PickupCheck()
-    {
-        
-    }
 }
