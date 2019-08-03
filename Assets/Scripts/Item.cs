@@ -5,12 +5,17 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="New Item", menuName="Game Item")]
 public class Item : ScriptableObject
 {
-    public string itemName;
-    public string itemDescription;
+	public enum ItemType
+	{
+		Sword,
+		Coin,
+		Key,
+		Bomb
+	}
+
+    public string name;
 
     public Sprite sprite;
 
-    public int attack;
-
-    public bool isKey;
+	public ItemType type;
 }
