@@ -5,12 +5,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Item item;
+    public Item heldItem;
 
-    [SerializeField] private static readonly float SPEED = 64.0f;
-    [SerializeField] private static readonly float ATTACK_COOLDOWN = 0.5f; //Time between attacks
+    [SerializeField] private float SPEED = 64.0f;
+	//Time between attacks
+	[SerializeField] private float ATTACK_COOLDOWN = 0.5f;
+	//Speed at which objects are thrown
+	[SerializeField] private float THROW_SPEED = 16.0f;
 
-    [SerializeField] private static readonly float DAMPENING = 0.01f;
+	[SerializeField] private float DAMPENING = 0.01f;
+
+	[SerializeField] private GameObject DROPPED_ITEM_PREFAB;
 
 	private Rigidbody2D rb;
 	private float attackCooldown;
@@ -18,67 +23,65 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
 		this.attackCooldown = 0.0f;
-		this.rb = GetComponent<Rigidbody2D>();
+		this.rb = this.GetComponent<Rigidbody2D>();
     }
 
     private void Update()
 	{
-		ThrowUpdate();
-		AttackUpdate();
+		this.ThrowUpdate();
+		this.AttackUpdate();
     }
 
 	private void FixedUpdate()
 	{
-		MovementUpdate();
+		this.MovementUpdate();
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		CheckItemPickup(collision);
+		this.CheckItemPickup(collision);
 	}
-	
+
 	private void ThrowUpdate()
 	{
 		if (Input.GetMouseButtonDown(1))
 		{
+			//instantiate new droppedItem prefab
+			GameObject g = GameObject.Instantiate(DROPPED_ITEM_PREFAB);
 
+			g.transform.position = this.transform.position;
+			g.GetComponent<Rigidbody2D>().velocity = Vector2.left * THROW_SPEED;
+
+			//Swap items in prefab and inventory, effectively clears it
+			{
+				Item temp = this.heldItem;
+				this.heldItem = g.GetComponent<DroppedItem>().item;
+				g.GetComponent<DroppedItem>().item = temp;
+			}
+
+			//Set hand sprite to null
+			this.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = null;
 		}
 	}
 
 	private void AttackUpdate()
     {
-
-        if (Input.GetMouseButtonDown(0) && attackCooldown <= 0.0f)
-        {
-			transform.GetChild(1).transform.rotation = Quaternion.identity;
-			attackCooldown = ATTACK_COOLDOWN;
-
-			switch (item.name)
+		if (attackCooldown <= 0.0f)
+		{
+			if (Input.GetMouseButton(0))
 			{
-				case "Sword":
-					//Sword attack
-					break;
-				case "Bomb":
-					//Place bomb
-					//Clear item
-					break;
-				case "Key":
-				case "Coin":
-				case "None":
-					//Do nothing
-					break;
-				default:
-					break;
+				attackCooldown = ATTACK_COOLDOWN;
 			}
-        }
+			else
+			{
+				this.transform.GetChild(1).transform.rotation = Quaternion.Euler(0, 0, 33.333f);
+			}
+		}
 		else
 		{
-			attackCooldown -= Time.deltaTime;
-			transform.GetChild(1).transform.rotation = Quaternion.Euler(0, 0, 33.333f);
+			this.transform.GetChild(1).transform.rotation = Quaternion.identity;
+			this.attackCooldown -= Time.deltaTime;
 		}
-
-
-
     }
 
     private void MovementUpdate()
@@ -96,13 +99,16 @@ public class PlayerController : MonoBehaviour
 
     private void CheckItemPickup(Collider2D collision)
     {
-		Debug.Log("Collided with trigger!");
-
         if (collision.gameObject.tag == "Item")
 		{
-			item = collision.gameObject.GetComponent<DropedItem>().item;
-			Destroy(collision.gameObject);
-			transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = item.iSprite;
+			DroppedItem i = collision.gameObject.GetComponent<DroppedItem>();
+
+			if (this.heldItem.iName.Equals(""))
+			{
+				this.heldItem = i.item;
+				this.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = this.heldItem.iSprite;
+				GameObject.Destroy(collision.gameObject);
+			}
 		}
     }
 
