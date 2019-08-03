@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99cf71a83a8c9f54cbf6b7859e05e6c6, type: 3}
-  m_Name: EarthStaff
+  m_Script: {fileID: 11500000, guid: 1606869dbf02a4d42ac05dc4a8e483e5, type: 3}
+  m_Name: Earth Staff
   m_EditorClassIdentifier: 
   iName: Earth Staff
-  iDescription: Summon a large rock!
+  iDescription: Spawns Earth Block
   iSprite: {fileID: 6114706908185900674, guid: 58d84b844d50c3248afa111c8982a628, type: 3}
+  bBlockPrefab: {fileID: 3556915743999835469, guid: aa38bd83b9b04034eacf2799824e48ac,
+    type: 3}

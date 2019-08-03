@@ -103,41 +103,47 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	private void AttackUpdate()
+    private void AttackUpdate()
     {
-		if (attackCooldown <= 0.0f)
-		{
-			if (Input.GetMouseButton(0))
-			{
-				this.attackCooldown = ATTACK_COOLDOWN;
+        if (attackCooldown <= 0.0f)
+        {
+            if (Input.GetMouseButton(0))
+            {
+                this.attackCooldown = ATTACK_COOLDOWN;
 
-				switch (this.heldItem.iName)
-				{
-					case "Earth Staff":
-						GameObject g = GameObject.Instantiate(EARTH_BLOCK_PREFAB);
+                if (this.heldItem is BlockCasterItem)
+                {
+                    BlockCasterItem item = (BlockCasterItem)heldItem;
+                    GameObject g = GameObject.Instantiate(item.bBlockPrefab);
 
-						Vector2 v = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-						g.transform.position = v;
-						break;
-                    case "Sword":
-                        Attack(transform , 1.5f, 1);
-						this.audioSource.PlayOneShot(SWORD_SWING);
-						break;
-					default:
-						break;
-				}
-			}
-			else
-			{
-				this.hand.transform.localRotation = Quaternion.identity;
-			}
-		}
-		else
-		{
-			this.hand.transform.localRotation = Quaternion.Euler(0, 0, -33.333f);
-			this.attackCooldown -= Time.deltaTime;
-		}
+                    Vector2 v = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    g.transform.position = v;
+                }
+                else if (this.heldItem is RangeItem)
+                {
+                    RangeItem item = (RangeItem)heldItem;
+                    //TODO
+
+                }
+                else if (this.heldItem is AttackItem)
+                {
+                    AttackItem item = (AttackItem)heldItem;
+                    Attack(transform, item.aRange, item.aDamage);
+                }
+
+            }
+            else
+            {
+                this.hand.transform.localRotation = Quaternion.identity;
+            }
+        }
+        else
+        {
+            this.hand.transform.localRotation = Quaternion.Euler(0, 0, -33.333f);
+            this.attackCooldown -= Time.deltaTime;
+        }
     }
+
 
     private void Attack(Transform attackPosition, float attackRadius, int damage)
     {

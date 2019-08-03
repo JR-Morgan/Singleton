@@ -419,6 +419,43 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1797385345868059994, guid: 38c7a63e274b3c44ab6b5b6b11b076aa,
+        type: 3}
+      propertyPath: ITEM_THROW
+      value: 
+      objectReference: {fileID: 8300000, guid: 444974991e6a2074cb42e80d6d5bf2a1, type: 3}
+    - target: {fileID: 1797385345868059994, guid: 38c7a63e274b3c44ab6b5b6b11b076aa,
+        type: 3}
+      propertyPath: ITEM_PICKUP
+      value: 
+      objectReference: {fileID: 8300000, guid: 8ab01540d40455647b2fc08196791989, type: 3}
+    - target: {fileID: 1797385345868059994, guid: 38c7a63e274b3c44ab6b5b6b11b076aa,
+        type: 3}
+      propertyPath: DOOR_UNLOCK
+      value: 
+      objectReference: {fileID: 8300000, guid: 3da58ca1bf1cb0f408f7d4d45e68a8b8, type: 3}
+    - target: {fileID: 1797385345868059994, guid: 38c7a63e274b3c44ab6b5b6b11b076aa,
+        type: 3}
+      propertyPath: ENEMY_HIT
+      value: 
+      objectReference: {fileID: 8300000, guid: c5290243702364644819f7ef6c5b7a16, type: 3}
+    - target: {fileID: 1797385345868059994, guid: 38c7a63e274b3c44ab6b5b6b11b076aa,
+        type: 3}
+      propertyPath: ENEMY_LAYER_MASK.m_Bits
+      value: 8192
+      objectReference: {fileID: 0}
+    - target: {fileID: 1797385345868059994, guid: 38c7a63e274b3c44ab6b5b6b11b076aa,
+        type: 3}
+      propertyPath: heldItem
+      value: 
+      objectReference: {fileID: 11400000, guid: b8014b82cd115fb499c4262dd58d65c6,
+        type: 2}
+    - target: {fileID: 1797385345868059994, guid: 38c7a63e274b3c44ab6b5b6b11b076aa,
+        type: 3}
+      propertyPath: EMPTY_ITEM
+      value: 
+      objectReference: {fileID: 11400000, guid: b8014b82cd115fb499c4262dd58d65c6,
+        type: 2}
     - target: {fileID: 1797385345519874015, guid: 38c7a63e274b3c44ab6b5b6b11b076aa,
         type: 3}
       propertyPath: m_BackGroundColor.r
@@ -484,31 +521,6 @@ PrefabInstance:
     - target: {fileID: 1947785133, guid: 38c7a63e274b3c44ab6b5b6b11b076aa, type: 3}
       propertyPath: m_ShapeLightFalloffSize
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1797385345868059994, guid: 38c7a63e274b3c44ab6b5b6b11b076aa,
-        type: 3}
-      propertyPath: ITEM_THROW
-      value: 
-      objectReference: {fileID: 8300000, guid: 444974991e6a2074cb42e80d6d5bf2a1, type: 3}
-    - target: {fileID: 1797385345868059994, guid: 38c7a63e274b3c44ab6b5b6b11b076aa,
-        type: 3}
-      propertyPath: ITEM_PICKUP
-      value: 
-      objectReference: {fileID: 8300000, guid: 8ab01540d40455647b2fc08196791989, type: 3}
-    - target: {fileID: 1797385345868059994, guid: 38c7a63e274b3c44ab6b5b6b11b076aa,
-        type: 3}
-      propertyPath: DOOR_UNLOCK
-      value: 
-      objectReference: {fileID: 8300000, guid: 3da58ca1bf1cb0f408f7d4d45e68a8b8, type: 3}
-    - target: {fileID: 1797385345868059994, guid: 38c7a63e274b3c44ab6b5b6b11b076aa,
-        type: 3}
-      propertyPath: ENEMY_HIT
-      value: 
-      objectReference: {fileID: 8300000, guid: c5290243702364644819f7ef6c5b7a16, type: 3}
-    - target: {fileID: 1797385345868059994, guid: 38c7a63e274b3c44ab6b5b6b11b076aa,
-        type: 3}
-      propertyPath: ENEMY_LAYER_MASK.m_Bits
-      value: 8192
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38c7a63e274b3c44ab6b5b6b11b076aa, type: 3}
@@ -886,7 +898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7acefa7601408e418c8bbdf428d4b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: aa28eb28c43401d4ebc106b2fc1ce7f0, type: 2}
+  item: {fileID: 11400000, guid: 4e06e2cf9ac708e4a83b0769918c34bf, type: 2}
   DEFAULT_PICKUP_TIME: 0
   DAMPENING: 0.01
 --- !u!212 &1726168348
@@ -4834,7 +4846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7acefa7601408e418c8bbdf428d4b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 56a9e766e7513d14586a0c5d478779bc, type: 2}
+  item: {fileID: 11400000, guid: c00d134f5f0ea164a87461ef139ed8b7, type: 2}
   DEFAULT_PICKUP_TIME: 0
   DAMPENING: 0.01
 --- !u!212 &2012268885

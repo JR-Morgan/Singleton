@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99cf71a83a8c9f54cbf6b7859e05e6c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 6fdd914abef0ba9439f0096648062f7c, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
   iName: Sword
-  iDescription: Attack enemies!
+  iDescription: This is a sword!
   iSprite: {fileID: 9170327630243124144, guid: 58d84b844d50c3248afa111c8982a628, type: 3}
+  aDamage: 1
+  aRange: 1.5
