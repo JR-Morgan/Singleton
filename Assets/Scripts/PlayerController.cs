@@ -45,8 +45,9 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.tag == "Item")
         {
-            item = gameObject.GetComponent<DropedItem>().item;
+            item = collision.gameObject.GetComponent<DropedItem>().item;
             Destroy(collision.gameObject);
+            transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = item.sprite;
         }
 	}
 
