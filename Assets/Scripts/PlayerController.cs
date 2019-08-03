@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 	{
 		this.ThrowUpdate();
 		this.AttackUpdate();
+		this.AnimationUpdate();
     }
 
 	private void FixedUpdate()
@@ -40,6 +41,12 @@ public class PlayerController : MonoBehaviour
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		this.CheckItemPickup(collision);
+	}
+
+	private void AnimationUpdate()
+	{
+		this.GetComponent<Animator>().SetFloat("Speed", this.rb.velocity.magnitude);
+		this.transform.localScale = new Vector3((this.rb.velocity.x > 0) ? 1.0f : -1.0f, 1.0f, 1.0f);
 	}
 
 	private void ThrowUpdate()
@@ -77,12 +84,12 @@ public class PlayerController : MonoBehaviour
 			}
 			else
 			{
-				this.transform.GetChild(1).transform.rotation = Quaternion.Euler(0, 0, 33.333f);
+				this.transform.GetChild(1).transform.localRotation = Quaternion.Euler(0, 0, -33.333f);
 			}
 		}
 		else
 		{
-			this.transform.GetChild(1).transform.rotation = Quaternion.identity;
+			this.transform.GetChild(1).transform.localRotation = Quaternion.identity;
 			this.attackCooldown -= Time.deltaTime;
 		}
     }
