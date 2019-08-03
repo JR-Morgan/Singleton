@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private Item EMPTY_ITEM;
 
 	[SerializeField] private AudioClip ITEM_THROW;
+	[SerializeField] private AudioClip ITEM_PICKUP;
 
 	private Rigidbody2D rb;
 	private Animator anim;
@@ -157,6 +158,9 @@ public class PlayerController : MonoBehaviour
 				this.heldItem = i.item;
 				this.hand.GetComponent<SpriteRenderer>().sprite = this.heldItem.iSprite;
 				GameObject.Destroy(collision.gameObject);
+
+				this.audio.clip = ITEM_PICKUP;
+				this.audio.Play();
 			}
 		}
     }

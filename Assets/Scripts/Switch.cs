@@ -21,7 +21,7 @@ public class Switch : MonoBehaviour
 
 	private void OnTriggerStay2D(Collider2D collision)
 	{
-		Debug.Log("Unlocked by: " + collision.gameObject.name);
+		//Debug.Log("Unlocked by: " + collision.gameObject.name);
 
 		if (this.activator == null)
 		{
@@ -32,7 +32,7 @@ public class Switch : MonoBehaviour
 
 	private void OnTriggerExit2D(Collider2D collision)
 	{
-		Debug.Log("locked by: " + collision.gameObject.name);
+		//Debug.Log("locked by: " + collision.gameObject.name);
 
 		if (collision.gameObject == this.activator)
 		{
