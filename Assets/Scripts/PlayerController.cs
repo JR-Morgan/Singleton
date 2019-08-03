@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
 
 	[SerializeField] private float DAMPENING = 0.01f;
 
+	[SerializeField] private float MAX_HEALTH = 3;
+
+	[SerializeField] private float KNOCKBACK = 16.0f;
+
 	[SerializeField] private GameObject DROPPED_ITEM_PREFAB;
 	[SerializeField] private GameObject EARTH_BLOCK_PREFAB;
 	[SerializeField] private Item EMPTY_ITEM;
@@ -22,20 +26,24 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private AudioClip ITEM_THROW;
 	[SerializeField] private AudioClip ITEM_PICKUP;
 	[SerializeField] private AudioClip DOOR_UNLOCK;
+	[SerializeField] private AudioClip ENEMY_HIT;
 
 	private Rigidbody2D rb;
 	private Animator anim;
 	private GameObject hand;
-	private AudioSource audio;
+	private AudioSource audioSource;
 	private float attackCooldown;
 
-    void Start()
+	private int health;
+
+	void Start()
     {
 		this.attackCooldown = 0.0f;
 		this.rb = this.GetComponent<Rigidbody2D>();
 		this.anim = this.GetComponent<Animator>();
 		this.hand = this.transform.GetChild(1).gameObject;
-		this.audio = this.GetComponent<AudioSource>();
+		this.audioSource = this.GetComponent<AudioSource>();
+		this.health = 3;
 	}
 
     private void Update()
@@ -53,6 +61,7 @@ public class PlayerController : MonoBehaviour
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
 		this.CheckDoorUnlock(collision);
+		this.CheckEnemy(collision);
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -87,7 +96,7 @@ public class PlayerController : MonoBehaviour
 				//Set hand sprite to null
 				this.hand.GetComponent<SpriteRenderer>().sprite = this.heldItem.iSprite;
 
-				this.audio.PlayOneShot(ITEM_THROW);
+				this.audioSource.PlayOneShot(ITEM_THROW);
 			}
 		}
 	}
@@ -145,7 +154,21 @@ public class PlayerController : MonoBehaviour
 			this.heldItem = EMPTY_ITEM;
 			this.hand.GetComponent<SpriteRenderer>().sprite = this.heldItem.iSprite;
 
-			this.audio.PlayOneShot(DOOR_UNLOCK, 0.5f);
+			this.audioSource.PlayOneShot(DOOR_UNLOCK, 0.5f);
+		}
+	}
+
+	private void CheckEnemy(Collision2D collision)
+	{
+		if (collision.gameObject.tag.Equals("Enemy"))
+		{
+			this.health--;
+
+			Vector2 knockbackAmount = (this.transform.position - collision.transform.position) * KNOCKBACK;
+
+			this.rb.velocity += knockbackAmount;
+			collision.rigidbody.velocity -= knockbackAmount;
+			this.audioSource.PlayOneShot(ENEMY_HIT);
 		}
 	}
 
@@ -161,7 +184,7 @@ public class PlayerController : MonoBehaviour
 				this.hand.GetComponent<SpriteRenderer>().sprite = this.heldItem.iSprite;
 				GameObject.Destroy(collision.gameObject);
 
-				this.audio.PlayOneShot(ITEM_PICKUP);
+				this.audioSource.PlayOneShot(ITEM_PICKUP);
 			}
 		}
     }
