@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private AudioClip ITEM_PICKUP;
 	[SerializeField] private AudioClip DOOR_UNLOCK;
 	[SerializeField] private AudioClip ENEMY_HIT;
+	[SerializeField] private AudioClip SWORD_SWING;
 
 	private Rigidbody2D rb;
 	private Animator anim;
@@ -120,7 +121,8 @@ public class PlayerController : MonoBehaviour
 						break;
                     case "Sword":
                         Attack(transform , 1.5f, 1);
-                        break;
+						this.audioSource.PlayOneShot(SWORD_SWING);
+						break;
 					default:
 						break;
 				}

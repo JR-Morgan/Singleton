@@ -419,31 +419,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1797385345868059994, guid: 38c7a63e274b3c44ab6b5b6b11b076aa,
-        type: 3}
-      propertyPath: ITEM_THROW
-      value: 
-      objectReference: {fileID: 8300000, guid: 444974991e6a2074cb42e80d6d5bf2a1, type: 3}
-    - target: {fileID: 1797385345868059994, guid: 38c7a63e274b3c44ab6b5b6b11b076aa,
-        type: 3}
-      propertyPath: ITEM_PICKUP
-      value: 
-      objectReference: {fileID: 8300000, guid: 8ab01540d40455647b2fc08196791989, type: 3}
-    - target: {fileID: 1797385345868059994, guid: 38c7a63e274b3c44ab6b5b6b11b076aa,
-        type: 3}
-      propertyPath: DOOR_UNLOCK
-      value: 
-      objectReference: {fileID: 8300000, guid: 3da58ca1bf1cb0f408f7d4d45e68a8b8, type: 3}
-    - target: {fileID: 1797385345868059994, guid: 38c7a63e274b3c44ab6b5b6b11b076aa,
-        type: 3}
-      propertyPath: ENEMY_HIT
-      value: 
-      objectReference: {fileID: 8300000, guid: c5290243702364644819f7ef6c5b7a16, type: 3}
-    - target: {fileID: 1797385345868059994, guid: 38c7a63e274b3c44ab6b5b6b11b076aa,
-        type: 3}
-      propertyPath: ENEMY_LAYER_MASK.m_Bits
-      value: 8192
-      objectReference: {fileID: 0}
     - target: {fileID: 1797385345519874015, guid: 38c7a63e274b3c44ab6b5b6b11b076aa,
         type: 3}
       propertyPath: m_BackGroundColor.r
@@ -509,6 +484,31 @@ PrefabInstance:
     - target: {fileID: 1947785133, guid: 38c7a63e274b3c44ab6b5b6b11b076aa, type: 3}
       propertyPath: m_ShapeLightFalloffSize
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1797385345868059994, guid: 38c7a63e274b3c44ab6b5b6b11b076aa,
+        type: 3}
+      propertyPath: ITEM_THROW
+      value: 
+      objectReference: {fileID: 8300000, guid: 444974991e6a2074cb42e80d6d5bf2a1, type: 3}
+    - target: {fileID: 1797385345868059994, guid: 38c7a63e274b3c44ab6b5b6b11b076aa,
+        type: 3}
+      propertyPath: ITEM_PICKUP
+      value: 
+      objectReference: {fileID: 8300000, guid: 8ab01540d40455647b2fc08196791989, type: 3}
+    - target: {fileID: 1797385345868059994, guid: 38c7a63e274b3c44ab6b5b6b11b076aa,
+        type: 3}
+      propertyPath: DOOR_UNLOCK
+      value: 
+      objectReference: {fileID: 8300000, guid: 3da58ca1bf1cb0f408f7d4d45e68a8b8, type: 3}
+    - target: {fileID: 1797385345868059994, guid: 38c7a63e274b3c44ab6b5b6b11b076aa,
+        type: 3}
+      propertyPath: ENEMY_HIT
+      value: 
+      objectReference: {fileID: 8300000, guid: c5290243702364644819f7ef6c5b7a16, type: 3}
+    - target: {fileID: 1797385345868059994, guid: 38c7a63e274b3c44ab6b5b6b11b076aa,
+        type: 3}
+      propertyPath: ENEMY_LAYER_MASK.m_Bits
+      value: 8192
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38c7a63e274b3c44ab6b5b6b11b076aa, type: 3}
@@ -782,9 +782,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LightType: 0
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.7
-  m_Color: {r: 1, g: 0, b: 0.50675917, a: 1}
-  m_Intensity: 0.7
+  m_FalloffIntensity: 0.5
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 0.5
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}
@@ -797,10 +797,10 @@ MonoBehaviour:
   m_PointLightOuterRadius: 5
   m_PointLightDistance: 3
   m_PointLightQuality: 1
-  m_ShapeLightParametricSides: 4
+  m_ShapeLightParametricSides: 32
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 5
+  m_ShapeLightFalloffSize: 1
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
   - {x: -0.5, y: -0.5, z: 0}
