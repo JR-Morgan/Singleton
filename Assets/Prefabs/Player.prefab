@@ -188,6 +188,9 @@ MonoBehaviour:
   DAMPENING: 0.01
   DROPPED_ITEM_PREFAB: {fileID: 4367432149871914788, guid: 9430360dc77d69148a2564072b3c5753,
     type: 3}
+  EARTH_BLOCK_PREFAB: {fileID: 3556915743999835469, guid: aa38bd83b9b04034eacf2799824e48ac,
+    type: 3}
+  EMPTY_ITEM: {fileID: 11400000, guid: b8014b82cd115fb499c4262dd58d65c6, type: 2}
 --- !u!50 &1797385344148901144
 Rigidbody2D:
   serializedVersion: 4

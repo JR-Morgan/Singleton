@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - ItemPreview
   - Door
+  - EarthBlock
   layers:
   - Default
   - TransparentFX

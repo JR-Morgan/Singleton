@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private float DAMPENING = 0.01f;
 
 	[SerializeField] private GameObject DROPPED_ITEM_PREFAB;
+	[SerializeField] private GameObject EARTH_BLOCK_PREFAB;
 	[SerializeField] private Item EMPTY_ITEM;
 
 	private Rigidbody2D rb;
@@ -85,7 +86,21 @@ public class PlayerController : MonoBehaviour
 		{
 			if (Input.GetMouseButton(0))
 			{
-				attackCooldown = ATTACK_COOLDOWN;
+				this.attackCooldown = ATTACK_COOLDOWN;
+
+				switch (this.heldItem.iName)
+				{
+					case "Earth Staff":
+
+						GameObject.Destroy(GameObject.FindGameObjectWithTag("EarthBlock"));
+
+						GameObject g = GameObject.Instantiate(EARTH_BLOCK_PREFAB);
+						Vector2 v = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+						g.transform.position = v;
+						break;
+					default:
+						break;
+				}
 			}
 			else
 			{
