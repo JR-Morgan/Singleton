@@ -19,14 +19,22 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private GameObject EARTH_BLOCK_PREFAB;
 	[SerializeField] private Item EMPTY_ITEM;
 
+	[SerializeField] private AudioClip ITEM_THROW;
+
 	private Rigidbody2D rb;
+	private Animator anim;
+	private GameObject hand;
+	private AudioSource audio;
 	private float attackCooldown;
 
     void Start()
     {
 		this.attackCooldown = 0.0f;
 		this.rb = this.GetComponent<Rigidbody2D>();
-    }
+		this.anim = this.GetComponent<Animator>();
+		this.hand = this.transform.GetChild(1).gameObject;
+		this.audio = this.GetComponent<AudioSource>();
+	}
 
     private void Update()
 	{
@@ -52,7 +60,7 @@ public class PlayerController : MonoBehaviour
 
 	private void AnimationUpdate()
 	{
-		this.GetComponent<Animator>().SetFloat("Speed", this.rb.velocity.magnitude);
+		this.anim.SetFloat("Speed", this.rb.velocity.magnitude);
 		this.transform.localScale = new Vector3((this.rb.velocity.x > 0) ? 1.0f : -1.0f, 1.0f, 1.0f);
 	}
 
@@ -75,7 +83,10 @@ public class PlayerController : MonoBehaviour
 				this.heldItem = EMPTY_ITEM;
 
 				//Set hand sprite to null
-				this.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = this.heldItem.iSprite;
+				this.hand.GetComponent<SpriteRenderer>().sprite = this.heldItem.iSprite;
+
+				this.audio.clip = ITEM_THROW;
+				this.audio.Play();
 			}
 		}
 	}
@@ -102,12 +113,12 @@ public class PlayerController : MonoBehaviour
 			}
 			else
 			{
-				this.transform.GetChild(1).transform.localRotation = Quaternion.identity;
+				this.hand.transform.localRotation = Quaternion.identity;
 			}
 		}
 		else
 		{
-			this.transform.GetChild(1).transform.localRotation = Quaternion.Euler(0, 0, -33.333f);
+			this.hand.transform.localRotation = Quaternion.Euler(0, 0, -33.333f);
 			this.attackCooldown -= Time.deltaTime;
 		}
     }
@@ -131,7 +142,7 @@ public class PlayerController : MonoBehaviour
 		{
 			GameObject.Destroy(collision.gameObject);
 			this.heldItem = EMPTY_ITEM;
-			this.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = this.heldItem.iSprite;
+			this.hand.GetComponent<SpriteRenderer>().sprite = this.heldItem.iSprite;
 		}
 	}
 
@@ -144,7 +155,7 @@ public class PlayerController : MonoBehaviour
 			if (this.heldItem.iName.Equals(""))
 			{
 				this.heldItem = i.item;
-				this.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = this.heldItem.iSprite;
+				this.hand.GetComponent<SpriteRenderer>().sprite = this.heldItem.iSprite;
 				GameObject.Destroy(collision.gameObject);
 			}
 		}
