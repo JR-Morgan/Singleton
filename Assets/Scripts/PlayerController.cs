@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour
 			this.heldItem = EMPTY_ITEM;
 			this.hand.GetComponent<SpriteRenderer>().sprite = this.heldItem.iSprite;
 
-			this.audio.PlayOneShot(DOOR_UNLOCK);
+			this.audio.PlayOneShot(DOOR_UNLOCK, 0.5f);
 		}
 	}
 

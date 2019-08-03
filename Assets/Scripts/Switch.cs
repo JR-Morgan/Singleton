@@ -31,7 +31,7 @@ public class Switch : MonoBehaviour
 		{
 			this.activator = collision.gameObject;
 			this.pt.isUnlocked = true;
-			audio.PlayOneShot(SWITCH_TOGGLE);
+			audio.PlayOneShot(SWITCH_TOGGLE, 0.5f);
 		}
 	}
 
@@ -43,7 +43,7 @@ public class Switch : MonoBehaviour
 		{
 			this.activator = null;
 			this.pt.isUnlocked = false;
-			audio.PlayOneShot(SWITCH_TOGGLE);
+			//audio.PlayOneShot(SWITCH_TOGGLE);
 		}
 	}
 }
