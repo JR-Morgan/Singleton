@@ -8,47 +8,44 @@ public class PlayerController : MonoBehaviour
     public Item item;
 
     [SerializeField]
-    private static readonly float SPEED = 64.0f;
+    private static readonly float SPEED = 32.0f;
 
 	[SerializeField] private readonly float DAMPENING = 0.01f;
 
-	private Vector2 speed;
+	private Rigidbody2D rb;
 	
     void Start()
     {
-		this.speed = new Vector2();
+		this.rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
 	{
-        movementUpdate();
+
+		PickupCheck();
     }
 
-    private void movementUpdate()
-    {
-        Vector2 acceleration = new Vector2();
-
-        if (Input.GetKey(KeyCode.W)) acceleration.y += SPEED;
-        if (Input.GetKey(KeyCode.S)) acceleration.y -= SPEED;
-        if (Input.GetKey(KeyCode.A)) acceleration.x -= SPEED;
-        if (Input.GetKey(KeyCode.D)) acceleration.x += SPEED;
-
-        this.speed += acceleration * Time.deltaTime;
-        this.transform.position += new Vector3(this.speed.x * Time.deltaTime, this.speed.y * Time.deltaTime, 0.0f);
-
-        this.speed *= Mathf.Pow(DAMPENING, Time.deltaTime);
-    }
-
-	private void OnCollisionEnter2D(Collision2D collision)
+	private void FixedUpdate()
 	{
-        Debug.Log("Collided with: " + collision.gameObject.name);
+		Vector2 acceleration = new Vector2();
 
-        if (collision.gameObject.tag == "Item")
-        {
-            item = collision.gameObject.GetComponent<DropedItem>().item;
-            Destroy(collision.gameObject);
-            transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = item.sprite;
-        }
+		if (Input.GetKey(KeyCode.W)) acceleration.y += SPEED;
+		if (Input.GetKey(KeyCode.S)) acceleration.y -= SPEED;
+		if (Input.GetKey(KeyCode.A)) acceleration.x -= SPEED;
+		if (Input.GetKey(KeyCode.D)) acceleration.x += SPEED;
+
+		this.rb.velocity += acceleration * Time.deltaTime;
+
+		this.rb.velocity *= Mathf.Pow(DAMPENING, Time.deltaTime);
 	}
 
+	private void OnCollisionStay2D(Collision2D collision)
+	{
+		Debug.Log("Collided with: " + collision.gameObject.name);
+	}
+
+	private void PickupCheck()
+    {
+        
+    }
 }
