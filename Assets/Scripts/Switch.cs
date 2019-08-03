@@ -6,11 +6,15 @@ public class Switch : MonoBehaviour
 {
 	private PuzzleTrigger pt;
 	private GameObject activator;
+	private AudioSource audio;
+
+	[SerializeField] private AudioClip SWITCH_TOGGLE;
 
 	// Start is called before the first frame update
 	void Start()
 	{
 		pt = this.GetComponent<PuzzleTrigger>();
+		this.audio = this.GetComponent<AudioSource>();
 	}
 
 	// Update is called once per frame
@@ -27,6 +31,7 @@ public class Switch : MonoBehaviour
 		{
 			this.activator = collision.gameObject;
 			this.pt.isUnlocked = true;
+			audio.PlayOneShot(SWITCH_TOGGLE);
 		}
 	}
 
@@ -38,6 +43,7 @@ public class Switch : MonoBehaviour
 		{
 			this.activator = null;
 			this.pt.isUnlocked = false;
+			audio.PlayOneShot(SWITCH_TOGGLE);
 		}
 	}
 }
