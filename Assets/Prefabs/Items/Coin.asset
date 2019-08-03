@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Coin
   m_EditorClassIdentifier: 
   iName: Coin
-  iDescription: Use it to buy items!
+  iDescription: Buy items!
   iSprite: {fileID: 1608028697691039176, guid: 58d84b844d50c3248afa111c8982a628, type: 3}

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Key
   m_EditorClassIdentifier: 
   iName: Key
-  iDescription: Use it to unlock doors
+  iDescription: Unlock a door!
   iSprite: {fileID: -7969225410775572928, guid: 58d84b844d50c3248afa111c8982a628,
     type: 3}

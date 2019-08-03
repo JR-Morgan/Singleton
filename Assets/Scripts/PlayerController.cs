@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private float DAMPENING = 0.01f;
 
 	[SerializeField] private GameObject DROPPED_ITEM_PREFAB;
+	[SerializeField] private Item EMPTY_ITEM;
 
 	private Rigidbody2D rb;
 	private float attackCooldown;
@@ -38,6 +39,11 @@ public class PlayerController : MonoBehaviour
 		this.MovementUpdate();
 	}
 
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+		this.CheckDoorUnlock(collision);
+	}
+
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		this.CheckItemPickup(collision);
@@ -51,26 +57,25 @@ public class PlayerController : MonoBehaviour
 
 	private void ThrowUpdate()
 	{
-		if (Input.GetMouseButtonDown(1))
+		if (!this.heldItem.iName.Equals(""))
 		{
-			Vector2 throwDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - this.transform.position;
-			throwDirection.Normalize();
-
-			//instantiate new droppedItem prefab
-			GameObject g = GameObject.Instantiate(DROPPED_ITEM_PREFAB);
-
-			g.transform.position = this.transform.position;
-			g.GetComponent<Rigidbody2D>().velocity = throwDirection * THROW_SPEED;
-
-			//Swap items in prefab and inventory, effectively clears it
+			if (Input.GetMouseButtonDown(1))
 			{
-				Item temp = this.heldItem;
-				this.heldItem = g.GetComponent<DroppedItem>().item;
-				g.GetComponent<DroppedItem>().item = temp;
-			}
+				Vector2 throwDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - this.transform.position;
+				throwDirection.Normalize();
 
-			//Set hand sprite to null
-			this.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = null;
+				//instantiate new droppedItem prefab
+				GameObject g = GameObject.Instantiate(DROPPED_ITEM_PREFAB);
+
+				g.transform.position = this.transform.position;
+				g.GetComponent<Rigidbody2D>().velocity = throwDirection * THROW_SPEED;
+
+				g.GetComponent<DroppedItem>().item = this.heldItem;
+				this.heldItem = EMPTY_ITEM;
+
+				//Set hand sprite to null
+				this.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = this.heldItem.iSprite;
+			}
 		}
 	}
 
@@ -84,12 +89,12 @@ public class PlayerController : MonoBehaviour
 			}
 			else
 			{
-				this.transform.GetChild(1).transform.localRotation = Quaternion.Euler(0, 0, -33.333f);
+				this.transform.GetChild(1).transform.localRotation = Quaternion.identity;
 			}
 		}
 		else
 		{
-			this.transform.GetChild(1).transform.localRotation = Quaternion.identity;
+			this.transform.GetChild(1).transform.localRotation = Quaternion.Euler(0, 0, -33.333f);
 			this.attackCooldown -= Time.deltaTime;
 		}
     }
@@ -107,9 +112,19 @@ public class PlayerController : MonoBehaviour
         this.rb.velocity *= Mathf.Pow(DAMPENING, Time.deltaTime);
     }
 
+	private void CheckDoorUnlock(Collision2D collision)
+	{
+		if (collision.gameObject.tag.Equals("Door") && this.heldItem.iName.Equals("Key"))
+		{
+			GameObject.Destroy(collision.gameObject);
+			this.heldItem = EMPTY_ITEM;
+			this.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = this.heldItem.iSprite;
+		}
+	}
+
     private void CheckItemPickup(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Item")
+        if (collision.gameObject.tag.Equals("Item"))
 		{
 			DroppedItem i = collision.gameObject.GetComponent<DroppedItem>();
 

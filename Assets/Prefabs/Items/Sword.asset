@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
   iName: Sword
-  iDescription: Use it to attack enemies!
+  iDescription: Attack enemies!
   iSprite: {fileID: 9170327630243124144, guid: 58d84b844d50c3248afa111c8982a628, type: 3}

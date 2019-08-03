@@ -8,6 +8,7 @@ TagManager:
   - Floor
   - Wall
   - ItemPreview
+  - Door
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Player
   - Item
   - Item_NoPickup
-  - 
+  - Map_Trigger
   - 
   - 
   - 
