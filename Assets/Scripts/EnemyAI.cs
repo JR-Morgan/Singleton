@@ -10,10 +10,13 @@ public class EnemyAI : MonoBehaviour
 
 	[SerializeField] private float MAX_HEALTH = 2;
 
-	private Animator animator;
+    
+    private Animator animator;
 	private Rigidbody2D rb;
+
 	private float aiDelta;
 	private Vector2 acceleration;
+    private float health;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +25,8 @@ public class EnemyAI : MonoBehaviour
 		this.rb = this.GetComponent<Rigidbody2D>();
 		this.aiDelta = 0.0f;
 		this.acceleration = new Vector2();
+
+        health = MAX_HEALTH;
     }
 
     // Update is called once per frame
@@ -38,10 +43,22 @@ public class EnemyAI : MonoBehaviour
 			this.aiDelta -= Time.deltaTime;
 		}
 
-		this.rb.velocity += this.acceleration * Time.deltaTime * SPEED;
+        if (health <= 0)
+        {
+            Debug.Log(this.ToString() + " has been killed");
+            GameObject.Destroy(gameObject);
+        }
+
+        this.rb.velocity += this.acceleration * Time.deltaTime * SPEED;
 		this.rb.velocity *= Mathf.Pow(DAMPENING, Time.deltaTime);
 
 		this.animator.SetFloat("Speed", this.rb.velocity.magnitude);
 		this.transform.localScale = new Vector3((this.rb.velocity.x > 0) ? 1.0f : -1.0f, 1.0f, 1.0f);
 	}
+
+    public void TakeDamage(int ammount)
+    {
+        health -= ammount;
+        Debug.Log(this.ToString() + " has been attacked, new health " + health);
+    }
 }

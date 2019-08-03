@@ -22,8 +22,9 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private GameObject DROPPED_ITEM_PREFAB;
 	[SerializeField] private GameObject EARTH_BLOCK_PREFAB;
 	[SerializeField] private Item EMPTY_ITEM;
+    [SerializeField] private LayerMask ENEMY_LAYER_MASK;
 
-	[SerializeField] private AudioClip ITEM_THROW;
+    [SerializeField] private AudioClip ITEM_THROW;
 	[SerializeField] private AudioClip ITEM_PICKUP;
 	[SerializeField] private AudioClip DOOR_UNLOCK;
 	[SerializeField] private AudioClip ENEMY_HIT;
@@ -117,6 +118,9 @@ public class PlayerController : MonoBehaviour
 						Vector2 v = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 						g.transform.position = v;
 						break;
+                    case "Sword":
+                        Attack(transform , 1.5f, 1);
+                        break;
 					default:
 						break;
 				}
@@ -131,6 +135,17 @@ public class PlayerController : MonoBehaviour
 			this.hand.transform.localRotation = Quaternion.Euler(0, 0, -33.333f);
 			this.attackCooldown -= Time.deltaTime;
 		}
+    }
+
+    private void Attack(Transform attackPosition, float attackRadius, int damage)
+    {
+        Collider2D[] damageTargets = Physics2D.OverlapCircleAll(attackPosition.position, attackRadius, ENEMY_LAYER_MASK);
+        
+        foreach (Collider2D target in damageTargets)
+        {
+            Debug.Log("Target damanged" + target);
+            target.GetComponent<EnemyAI>().TakeDamage(damage);
+        }
     }
 
     private void MovementUpdate()
