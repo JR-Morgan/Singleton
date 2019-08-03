@@ -46,11 +46,14 @@ public class PlayerController : MonoBehaviour
 	{
 		if (Input.GetMouseButtonDown(1))
 		{
+			Vector2 throwDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - this.transform.position;
+			throwDirection.Normalize();
+
 			//instantiate new droppedItem prefab
 			GameObject g = GameObject.Instantiate(DROPPED_ITEM_PREFAB);
 
 			g.transform.position = this.transform.position;
-			g.GetComponent<Rigidbody2D>().velocity = Vector2.left * THROW_SPEED;
+			g.GetComponent<Rigidbody2D>().velocity = throwDirection * THROW_SPEED;
 
 			//Swap items in prefab and inventory, effectively clears it
 			{
