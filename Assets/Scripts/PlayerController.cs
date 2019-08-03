@@ -8,21 +8,23 @@ public class PlayerController : MonoBehaviour
     public Item item;
 
     [SerializeField] private static readonly float SPEED = 64.0f;
-    [SerializeField] private static readonly float ATTACK_SPEED = 0.1f; //Attack speed in secconds
+    [SerializeField] private static readonly float ATTACK_COOLDOWN = 0.5f; //Time between attacks
 
-    [SerializeField] private readonly float DAMPENING = 0.01f;
+    [SerializeField] private static readonly float DAMPENING = 0.01f;
 
 	private Rigidbody2D rb;
-    private float attackDeltaT = 0f;
+	private float attackCooldown;
 
     void Start()
     {
+		this.attackCooldown = 0.0f;
 		this.rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
-    {
-        AttackUpdate();
+	{
+		ThrowUpdate();
+		AttackUpdate();
     }
 
 	private void FixedUpdate()
@@ -34,21 +36,47 @@ public class PlayerController : MonoBehaviour
 	{
 		CheckItemPickup(collision);
 	}
+	
+	private void ThrowUpdate()
+	{
+		if (Input.GetMouseButtonDown(1))
+		{
+
+		}
+	}
 
 	private void AttackUpdate()
     {
 
-        transform.GetChild(1).transform.rotation = Quaternion.Euler(0, 0, 33.333f);
-
-        if (Input.GetButton("Attack"))
+        if (Input.GetMouseButtonDown(0) && attackCooldown <= 0.0f)
         {
 			transform.GetChild(1).transform.rotation = Quaternion.identity;
-            attackDeltaT = ATTACK_SPEED;
+			attackCooldown = ATTACK_COOLDOWN;
+
+			switch (item.name)
+			{
+				case "Sword":
+					//Sword attack
+					break;
+				case "Bomb":
+					//Place bomb
+					//Clear item
+					break;
+				case "Key":
+				case "Coin":
+				case "None":
+					//Do nothing
+					break;
+				default:
+					break;
+			}
         }
-        if (attackDeltaT <= 0)
-        {
-            attackDeltaT -= Time.deltaTime;
-        }
+		else
+		{
+			attackCooldown -= Time.deltaTime;
+			transform.GetChild(1).transform.rotation = Quaternion.Euler(0, 0, 33.333f);
+		}
+
 
 
     }
@@ -74,7 +102,7 @@ public class PlayerController : MonoBehaviour
 		{
 			item = collision.gameObject.GetComponent<DropedItem>().item;
 			Destroy(collision.gameObject);
-			transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = item.sprite;
+			transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = item.iSprite;
 		}
     }
 

@@ -9,7 +9,7 @@ public class DropedItem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<SpriteRenderer>().sprite = item.sprite;
+        GetComponent<SpriteRenderer>().sprite = item.iSprite;
     }
 
     // Update is called once per frame

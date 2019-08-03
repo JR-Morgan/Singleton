@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99cf71a83a8c9f54cbf6b7859e05e6c6, type: 3}
-  m_Name: Key
+  m_Name: Empty
   m_EditorClassIdentifier: 
-  iName: Key
-  iDescription: Use it to unlock doors
-  iSprite: {fileID: -7969225410775572928, guid: 58d84b844d50c3248afa111c8982a628,
-    type: 3}
+  iName: 
+  iDescription: 
+  iSprite: {fileID: 0}

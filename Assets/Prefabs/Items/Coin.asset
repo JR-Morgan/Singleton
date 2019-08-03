@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99cf71a83a8c9f54cbf6b7859e05e6c6, type: 3}
   m_Name: Coin
   m_EditorClassIdentifier: 
-  itemName: Coin
-  itemDescription: This is a coin
-  sprite: {fileID: 7286500777932155457, guid: 58d84b844d50c3248afa111c8982a628, type: 3}
-  attack: 1
-  isKey: 0
+  iName: Coin
+  iDescription: Use it to buy items!
+  iSprite: {fileID: 1608028697691039176, guid: 58d84b844d50c3248afa111c8982a628, type: 3}
