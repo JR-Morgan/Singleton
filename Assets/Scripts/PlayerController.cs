@@ -91,10 +91,8 @@ public class PlayerController : MonoBehaviour
 				switch (this.heldItem.iName)
 				{
 					case "Earth Staff":
-
-						GameObject.Destroy(GameObject.FindGameObjectWithTag("EarthBlock"));
-
 						GameObject g = GameObject.Instantiate(EARTH_BLOCK_PREFAB);
+
 						Vector2 v = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 						g.transform.position = v;
 						break;

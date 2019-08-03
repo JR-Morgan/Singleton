@@ -10,6 +10,7 @@ TagManager:
   - ItemPreview
   - Door
   - EarthBlock
+  - Portal
   layers:
   - Default
   - TransparentFX
