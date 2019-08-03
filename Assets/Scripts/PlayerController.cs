@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
 	[SerializeField] private AudioClip ITEM_THROW;
 	[SerializeField] private AudioClip ITEM_PICKUP;
+	[SerializeField] private AudioClip DOOR_UNLOCK;
 
 	private Rigidbody2D rb;
 	private Animator anim;
@@ -86,8 +87,7 @@ public class PlayerController : MonoBehaviour
 				//Set hand sprite to null
 				this.hand.GetComponent<SpriteRenderer>().sprite = this.heldItem.iSprite;
 
-				this.audio.clip = ITEM_THROW;
-				this.audio.Play();
+				this.audio.PlayOneShot(ITEM_THROW);
 			}
 		}
 	}
@@ -144,6 +144,8 @@ public class PlayerController : MonoBehaviour
 			GameObject.Destroy(collision.gameObject);
 			this.heldItem = EMPTY_ITEM;
 			this.hand.GetComponent<SpriteRenderer>().sprite = this.heldItem.iSprite;
+
+			this.audio.PlayOneShot(DOOR_UNLOCK);
 		}
 	}
 
@@ -159,8 +161,7 @@ public class PlayerController : MonoBehaviour
 				this.hand.GetComponent<SpriteRenderer>().sprite = this.heldItem.iSprite;
 				GameObject.Destroy(collision.gameObject);
 
-				this.audio.clip = ITEM_PICKUP;
-				this.audio.Play();
+				this.audio.PlayOneShot(ITEM_PICKUP);
 			}
 		}
     }

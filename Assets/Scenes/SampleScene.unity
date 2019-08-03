@@ -709,6 +709,11 @@ PrefabInstance:
       propertyPath: ITEM_PICKUP
       value: 
       objectReference: {fileID: 8300000, guid: 8ab01540d40455647b2fc08196791989, type: 3}
+    - target: {fileID: 1797385345868059994, guid: 38c7a63e274b3c44ab6b5b6b11b076aa,
+        type: 3}
+      propertyPath: DOOR_UNLOCK
+      value: 
+      objectReference: {fileID: 8300000, guid: 3da58ca1bf1cb0f408f7d4d45e68a8b8, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38c7a63e274b3c44ab6b5b6b11b076aa, type: 3}
 --- !u!1 &1021743124
