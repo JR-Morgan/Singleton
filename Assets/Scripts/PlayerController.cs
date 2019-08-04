@@ -8,9 +8,7 @@ public class PlayerController : MonoBehaviour
     public Item heldItem;
 
     [SerializeField] private float SPEED = 64.0f;
-    //Time between attacks
     [SerializeField] private float ATTACK_COOLDOWN = 0.5f;
-    //Speed at which objects are thrown
     [SerializeField] private float THROW_SPEED = 16.0f;
 
     [SerializeField] private float DAMPENING = 0.01f;
@@ -20,10 +18,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float KNOCKBACK = 16.0f;
 
     [SerializeField] private GameObject DROPPED_ITEM_PREFAB;
-    [SerializeField] private GameObject EARTH_BLOCK_PREFAB;
     [SerializeField] private Item EMPTY_ITEM;
     [SerializeField] private LayerMask ENEMY_LAYER_MASK;
 
+    //Audio
     [SerializeField] private AudioClip ITEM_THROW;
     [SerializeField] private AudioClip ITEM_PICKUP;
     [SerializeField] private AudioClip DOOR_UNLOCK;
@@ -66,6 +64,7 @@ public class PlayerController : MonoBehaviour
         this.CheckDoorUnlock(collision);
         this.CheckEnemy(collision);
         this.CheckShop(collision);
+        this.CheckPortal(collision);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -146,7 +145,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Causes enemies within the attack radius to take damage equal to the damage amount
+    /// </summary>
+    /// <param name="attackPosition">The transform of the attack</param>
+    /// <param name="attackRadius">The radius of the attack</param>
+    /// <param name="damage">The damage the target(s) will take from the attack</param>
     private void Attack(Transform attackPosition, float attackRadius, int damage)
     {
         Collider2D[] damageTargets = Physics2D.OverlapCircleAll(attackPosition.position, attackRadius, ENEMY_LAYER_MASK);
@@ -215,13 +219,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Dunno if this is the way you want to do them so feel free to change.
+    private void CheckPortal(Collision2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Portal"))
+        {
+            Debug.Log("Portal Activating..");
+            collision.gameObject.GetComponent<PortalController>().Teleport();
+        }
+    }
+
     private void CheckShop(Collision2D collision)
     {
-        if (heldItem.iName == collision.gameObject.GetComponent<ShopController>().cost.iName)
+        if (collision.gameObject.tag.Equals("Shop") &&
+            heldItem.iName == collision.gameObject.GetComponent<ShopController>().cost.iName)
         {
-
             if (collision.gameObject.GetComponent<ShopController>().ammount != 0)
-            {
+            { //The shop will vend the item directly to player's hand
                 this.heldItem = collision.gameObject.GetComponent<ShopController>().vend;
                 if (this.heldItem == null) this.heldItem = EMPTY_ITEM;
 
@@ -233,7 +247,7 @@ public class PlayerController : MonoBehaviour
 
             }
             if (collision.gameObject.GetComponent<ShopController>().ammount == 0)
-            {
+            { //Then checks if shop should be destroyed
                 Destroy(collision.gameObject);
             }
 

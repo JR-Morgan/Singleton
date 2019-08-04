@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour
 
 	[SerializeField] private float DAMPENING = 0.01f;
 
-	[SerializeField] private float MAX_HEALTH = 2;
+    [SerializeField] private int MAX_HEALTH = 2;
 
     
     private Animator animator;
@@ -16,7 +16,7 @@ public class EnemyAI : MonoBehaviour
 
 	private float aiDelta;
 	private Vector2 acceleration;
-    private float health;
+    private int health;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +56,10 @@ public class EnemyAI : MonoBehaviour
 		this.transform.localScale = new Vector3((this.rb.velocity.x > 0) ? 1.0f : -1.0f, 1.0f, 1.0f);
 	}
 
+    /// <summary>
+    /// Enemy health will be subtracted by the ammount
+    /// </summary>
+    /// <param name="ammount"></param>
     public void TakeDamage(int ammount)
     {
         health -= ammount;
