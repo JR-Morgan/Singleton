@@ -12,6 +12,7 @@ TagManager:
   - EarthBlock
   - Portal
   - Enemy
+  - Shop
   layers:
   - Default
   - TransparentFX
