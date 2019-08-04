@@ -20,7 +20,7 @@ public class UIController : MonoBehaviour
     {
 		Item i = player.GetComponent<PlayerController>().heldItem;
 
-		if (i != null || i.iName.Equals("")  )
+		if (i == null || i.iName.Equals(""))
 		{
 			this.GetComponent<UnityEngine.UI.Image>().color = Color.clear;
 		}

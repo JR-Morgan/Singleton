@@ -273,6 +273,7 @@ MonoBehaviour:
   DOOR_UNLOCK: {fileID: 8300000, guid: 3da58ca1bf1cb0f408f7d4d45e68a8b8, type: 3}
   ENEMY_HIT: {fileID: 8300000, guid: c5290243702364644819f7ef6c5b7a16, type: 3}
   SWORD_SWING: {fileID: 8300000, guid: 3c2ea919f05ed4c48a4cc7fdde7738d0, type: 3}
+  PORTAL_ACTIVATE: {fileID: 8300000, guid: 62ed14dca8dfc664581a8b72c37053de, type: 3}
 --- !u!50 &1797385344148901144
 Rigidbody2D:
   serializedVersion: 4

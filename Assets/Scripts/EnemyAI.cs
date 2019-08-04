@@ -10,6 +10,12 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] private int MAX_HEALTH = 2;
 
+	[SerializeField] private GameObject DROPPED_ITEM_PREFAB;
+
+	[SerializeField] private AudioClip ENEMY_DEATH_CLIP;
+
+	[SerializeField] private Item heldItem;
+
     
     private Animator animator;
 	private Rigidbody2D rb;
@@ -46,7 +52,17 @@ public class EnemyAI : MonoBehaviour
         if (health <= 0)
         {
             Debug.Log(this.ToString() + " has been killed");
+
+			if (!this.heldItem.iName.Equals(""))
+			{
+				GameObject g = GameObject.Instantiate(DROPPED_ITEM_PREFAB);
+				g.GetComponent<DroppedItem>().item = this.heldItem;
+				g.GetComponent<Rigidbody2D>().velocity = this.rb.velocity;
+				g.transform.position = this.transform.position;
+			}
+
             GameObject.Destroy(gameObject);
+			AudioSource.PlayClipAtPoint(ENEMY_DEATH_CLIP, this.transform.position);
         }
 
         this.rb.velocity += this.acceleration * Time.deltaTime * SPEED;
@@ -65,5 +81,7 @@ public class EnemyAI : MonoBehaviour
         health -= ammount;
         Debug.Log(this.ToString() + " has been attacked, new health " + health);
         transform.GetChild(0).GetComponent<ParticleSystem>().Play();
+
+
     }
 }

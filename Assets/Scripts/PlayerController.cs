@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip DOOR_UNLOCK;
     [SerializeField] private AudioClip ENEMY_HIT;
     [SerializeField] private AudioClip SWORD_SWING;
+    [SerializeField] private AudioClip PORTAL_ACTIVATE;
 
 
     private Rigidbody2D rb;
@@ -128,6 +129,7 @@ public class PlayerController : MonoBehaviour
                 }
                 else if (this.heldItem is AttackItem)
                 {
+					audioSource.PlayOneShot(SWORD_SWING);
                     AttackItem item = (AttackItem)heldItem;
                     Attack(transform, item.aRange, item.aDamage);
                 }
@@ -226,6 +228,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Portal Activating..");
             collision.gameObject.GetComponent<PortalController>().Teleport();
+			AudioSource.PlayClipAtPoint(PORTAL_ACTIVATE, this.transform.position, 2.0f);
         }
     }
 
