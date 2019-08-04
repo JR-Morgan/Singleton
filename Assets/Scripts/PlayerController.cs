@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -50,9 +51,15 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if(health <= 0)
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
         this.ThrowUpdate();
         this.AttackUpdate();
         this.AnimationUpdate();
+
+
     }
 
     private void FixedUpdate()
@@ -195,6 +202,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag.Equals("Enemy"))
         {
                 this.health--;
+            Debug.Log(health);
 
                 Vector2 knockbackAmount = (this.transform.position - collision.transform.position) * KNOCKBACK;
 
