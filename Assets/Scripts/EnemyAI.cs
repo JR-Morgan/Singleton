@@ -60,5 +60,6 @@ public class EnemyAI : MonoBehaviour
     {
         health -= ammount;
         Debug.Log(this.ToString() + " has been attacked, new health " + health);
+        transform.GetChild(0).GetComponent<ParticleSystem>().Play();
     }
 }

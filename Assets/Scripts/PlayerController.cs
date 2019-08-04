@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
     {
         this.CheckDoorUnlock(collision);
         this.CheckEnemy(collision);
+        this.CheckShop(collision);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -185,9 +186,8 @@ public class PlayerController : MonoBehaviour
     private void CheckEnemy(Collision2D collision)
     {
         
-        switch (collision.gameObject.tag)
+        if (collision.gameObject.tag.Equals("Enemy"))
         {
-            case "Enemy":
                 this.health--;
 
                 Vector2 knockbackAmount = (this.transform.position - collision.transform.position) * KNOCKBACK;
@@ -195,35 +195,6 @@ public class PlayerController : MonoBehaviour
                 this.rb.velocity += knockbackAmount;
                 collision.rigidbody.velocity -= knockbackAmount;
                 this.audioSource.PlayOneShot(ENEMY_HIT);
-                break;
-            case "Shop":
-                
-                if (heldItem.iName == collision.gameObject.GetComponent<ShopController>().cost.iName)
-                {
-                    Debug.Log("reeee");
-
-                    if (collision.gameObject.GetComponent<ShopController>().ammount != 0)
-                    {
-                        this.heldItem = collision.gameObject.GetComponent<ShopController>().vend;
-                        if (this.heldItem == null) this.heldItem = EMPTY_ITEM;
-
-                        this.hand.GetComponent<SpriteRenderer>().sprite = this.heldItem.iSprite;
-
-                        collision.gameObject.GetComponent<ShopController>().ammount--;
-
-                        this.audioSource.PlayOneShot(ITEM_PICKUP);
-                        
-                    }
-                    if (collision.gameObject.GetComponent<ShopController>().ammount == 0)
-                    {
-                        Destroy(collision.gameObject);
-                    }
-
-
-
-                }
-                break;
-
         }
     }
 
@@ -241,6 +212,31 @@ public class PlayerController : MonoBehaviour
 
                 this.audioSource.PlayOneShot(ITEM_PICKUP);
             }
+        }
+    }
+
+    private void CheckShop(Collision2D collision)
+    {
+        if (heldItem.iName == collision.gameObject.GetComponent<ShopController>().cost.iName)
+        {
+
+            if (collision.gameObject.GetComponent<ShopController>().ammount != 0)
+            {
+                this.heldItem = collision.gameObject.GetComponent<ShopController>().vend;
+                if (this.heldItem == null) this.heldItem = EMPTY_ITEM;
+
+                this.hand.GetComponent<SpriteRenderer>().sprite = this.heldItem.iSprite;
+
+                collision.gameObject.GetComponent<ShopController>().ammount--;
+
+                this.audioSource.PlayOneShot(ITEM_PICKUP);
+
+            }
+            if (collision.gameObject.GetComponent<ShopController>().ammount == 0)
+            {
+                Destroy(collision.gameObject);
+            }
+
         }
     }
 
