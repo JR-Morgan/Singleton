@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1606869dbf02a4d42ac05dc4a8e483e5, type: 3}
+  m_Name: Ice Staff
+  m_EditorClassIdentifier: 
+  iName: Ice Staff
+  iDescription: Creates an Ice block
+  iSprite: {fileID: -1158871858569825772, guid: 58d84b844d50c3248afa111c8982a628,
+    type: 3}
+  bBlockPrefab: {fileID: 5929578131705718558, guid: 455e3b3bba1331e4785a4eaaea4a98eb,
+    type: 3}
